@@ -331,13 +331,15 @@ GameObject:
   - component: {fileID: 290021395}
   - component: {fileID: 290021397}
   - component: {fileID: 290021396}
+  - component: {fileID: 290021399}
+  - component: {fileID: 290021398}
   m_Layer: 5
   m_Name: Towers_building_bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &290021395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -395,6 +397,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290021394}
   m_CullTransparentMesh: 0
+--- !u!114 &290021398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290021394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 30
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
+  m_Spacing: 40
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+--- !u!114 &290021399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290021394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a14a2ad5a14c67ba9cbd27467d37f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListOfAvailableTowers:
+  - {fileID: 3799584853319445621, guid: 2124b1717a8231a429c3f5c7d35a8f0d, type: 3}
+  ItemPrefab: {fileID: 8701185857842871494, guid: d079db09967196e4faefcfe6b421063b,
+    type: 3}
 --- !u!1 &291755691
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880574675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -661,6 +704,7 @@ GameObject:
   - component: {fileID: 1010656981}
   - component: {fileID: 1010656980}
   - component: {fileID: 1010656979}
+  - component: {fileID: 1010656982}
   m_Layer: 5
   m_Name: Close_bar
   m_TagString: Untagged
@@ -779,6 +823,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010656977}
   m_CullTransparentMesh: 0
+--- !u!114 &1010656982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010656977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1059571829
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059571829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1054,6 +1118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftTowerGrid: {fileID: 411496262}
   _rightTowerGrid: {fileID: 291755692}
+  _lastPressedCell: {fileID: 0}
 --- !u!1 &1917600245
 GameObject:
   m_ObjectHideFlags: 0

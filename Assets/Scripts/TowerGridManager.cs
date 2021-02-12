@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class TowerGridManager : MonoBehaviour
 {
     public Grid _leftTowerGrid;
     public Grid _rightTowerGrid;
-    private TowerGridCell _lastPressedCell;
+   [SerializeField] private TowerGridCell _lastPressedCell;
+
+    public TowerGridCell LastPressedCell
+    {
+        get => _lastPressedCell;
+        set => _lastPressedCell = value;
+    }
+
     public static TowerGridManager Instance;
     
     void Start()
@@ -19,9 +27,10 @@ public class TowerGridManager : MonoBehaviour
         _rightTowerGrid.CreateGrid();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateTower(TowerBase towerBase)
     {
-        
+        TowerBase tower = Instantiate(towerBase, _lastPressedCell.transform);
+        tower.transform.parent = _lastPressedCell.transform;
+        _lastPressedCell = null;
     }
 }

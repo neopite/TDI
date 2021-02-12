@@ -13,6 +13,7 @@ public class TowerGridCell : MonoBehaviour
 
     private void OnMouseDown()
     {
+        TowerGridManager.Instance.LastPressedCell = this;
         _towerSelectionBar = GameObject.Find("Canvas").transform.Find("Towers_building_bar").gameObject;
         _towerSelectionBar.SetActive(true);
     }

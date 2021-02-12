@@ -35,6 +35,9 @@ public class Grid : MonoBehaviour
             for (int column = 0; column < columns; column++)
             {
                 GameObject tile = Instantiate(_tileSprite, transform);
+                var transformPosition = tile.transform.position;
+                transformPosition.z = -10;
+                tile.transform.position = transformPosition;
                 SpawnTile(column,row,tile);
             }
         }
