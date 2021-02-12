@@ -6,6 +6,7 @@ public class TowerGridManager : MonoBehaviour
 {
     public Grid _leftTowerGrid;
     public Grid _rightTowerGrid;
+    private TowerGridCell _lastPressedCell;
     public static TowerGridManager Instance;
     
     void Start()
