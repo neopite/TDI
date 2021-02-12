@@ -352,7 +352,7 @@ MonoBehaviour:
   _tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
     type: 3}
   rows: 3
-  columns: 3
+  columns: 2
   _verticalGridOffset: 1
   TilesOffset: 1.1
   pivot: {x: 0, y: 0}
@@ -404,7 +404,7 @@ MonoBehaviour:
   _tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
     type: 3}
   rows: 3
-  columns: 3
+  columns: 2
   _verticalGridOffset: 1
   TilesOffset: 1.1
   pivot: {x: 0, y: 0}
@@ -554,8 +554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
     type: 3}
-  rows: 3
-  columns: 4
+  rows: 5
+  columns: 7
   _verticalGridOffset: 1
   TilesOffset: 1.1
   pivot: {x: 0, y: 0}
