@@ -7,10 +7,11 @@ public class Grid : MonoBehaviour
 {
     [SerializeField] private GameObject _tileSprite;
 
-    [SerializeField] private int rows;
-    [SerializeField] private int columns;
-    [SerializeField]private float _verticalGridOffset;
-    public float TilesOffset = 1.1f;
+
+    [Range(1,9)][SerializeField] private int rows;
+    [Range(1,9)][SerializeField] private int columns;
+    [Range(0,2)][SerializeField]private float _verticalGridOffset;
+    [Range(1,2)]public float TilesOffset = 1.1f;
     public int Rows
     {
         get => rows;

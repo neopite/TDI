@@ -29,8 +29,11 @@ public class TowerGridManager : MonoBehaviour
 
     public void CreateTower(TowerBase towerBase)
     {
-        TowerBase tower = Instantiate(towerBase, _lastPressedCell.transform);
-        tower.transform.parent = _lastPressedCell.transform;
-        _lastPressedCell = null;
+        if (_lastPressedCell != null)
+        {
+            TowerBase tower = Instantiate(towerBase, _lastPressedCell.transform);
+            tower.transform.parent = _lastPressedCell.transform;
+            _lastPressedCell = null;
+        }
     }
 }
