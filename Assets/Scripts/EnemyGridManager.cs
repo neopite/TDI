@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -7,14 +8,21 @@ namespace DefaultNamespace
     {
         public static EnemyGridManager Instance;
         public Grid _enemyGrid;
+        public Grid _enemyPreviewGrid;
+        public List<TowerGridCell> _towerGridsTowerCells;
+        public List<TowerGridCell> _previewEnemyCells;
 
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
+                
             }else Destroy(gameObject);
-            _enemyGrid.CreateGrid();
+            _towerGridsTowerCells = new List<TowerGridCell>();
+            _previewEnemyCells = new List<TowerGridCell>();
+            _towerGridsTowerCells.AddRange(_enemyGrid.CreateGrid());
+            _previewEnemyCells.AddRange(_enemyPreviewGrid.CreateGrid());
         }
     }
 }

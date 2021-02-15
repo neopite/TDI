@@ -471,7 +471,7 @@ MonoBehaviour:
     type: 3}
   rows: 5
   columns: 3
-  _verticalGridOffset: 1
+  _verticalGridOffset: 2.5
   TilesOffset: 1.1
   pivot: {x: 0, y: 0}
   _towerGridType: 0
@@ -523,7 +523,7 @@ MonoBehaviour:
     type: 3}
   rows: 5
   columns: 3
-  _verticalGridOffset: 1
+  _verticalGridOffset: 2.5
   TilesOffset: 1.1
   pivot: {x: 0, y: 0}
   _towerGridType: 1
@@ -675,7 +675,7 @@ MonoBehaviour:
     type: 3}
   rows: 5
   columns: 6
-  _verticalGridOffset: 1
+  _verticalGridOffset: 2.5
   TilesOffset: 1.1
   pivot: {x: 0, y: 0}
 --- !u!4 &880574677
@@ -926,6 +926,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1346621868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1346621870}
+  - component: {fileID: 1346621869}
+  m_Layer: 0
+  m_Name: Enemy_preview_grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1346621869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346621868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3abdeb4f5b44c6981d832ef041ce6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
+    type: 3}
+  rows: 1
+  columns: 5
+  _verticalGridOffset: 0
+  TilesOffset: 1.1
+  pivot: {x: 0, y: 0}
+  _offsetBetweenGrids: 0
+--- !u!4 &1346621870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346621868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1409770084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyGrid: {fileID: 880574676}
+  _enemyPreviewGrid: {fileID: 1346621869}
+  _towerGridsTowerCells: []
+  _previewEnemyCells: []
 --- !u!4 &1775990304
 Transform:
   m_ObjectHideFlags: 0
@@ -1119,6 +1173,7 @@ MonoBehaviour:
   _leftTowerGrid: {fileID: 411496262}
   _rightTowerGrid: {fileID: 291755692}
   _lastPressedCell: {fileID: 0}
+  _towerCellsList: []
 --- !u!1 &1917600245
 GameObject:
   m_ObjectHideFlags: 0

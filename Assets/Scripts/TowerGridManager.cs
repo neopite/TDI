@@ -8,6 +8,7 @@ public class TowerGridManager : MonoBehaviour
     public Grid _leftTowerGrid;
     public Grid _rightTowerGrid;
    [SerializeField] private TowerGridCell _lastPressedCell;
+   public List<TowerGridCell> _towerCellsList;
 
     public TowerGridCell LastPressedCell
     {
@@ -22,17 +23,19 @@ public class TowerGridManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            _towerCellsList = new List<TowerGridCell>();
         }else Destroy(gameObject);
-        _leftTowerGrid.CreateGrid();
-        _rightTowerGrid.CreateGrid();
+        _towerCellsList.AddRange(_leftTowerGrid.CreateGrid());
+        _towerCellsList.AddRange(_rightTowerGrid.CreateGrid());
     }
 
-    public void CreateTower(TowerBase towerBase)
+    public void CreateTower(TowerBase towerBase) 
     {
-        if (_lastPressedCell != null)
+        if (_lastPressedCell != null && _lastPressedCell.Tower==null)
         {
             TowerBase tower = Instantiate(towerBase, _lastPressedCell.transform);
             tower.transform.parent = _lastPressedCell.transform;
+            _lastPressedCell.Tower = tower;
             _lastPressedCell = null;
         }
     }

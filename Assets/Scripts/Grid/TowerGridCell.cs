@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class TowerGridCell : MonoBehaviour
 {
     private GameObject _towerSelectionBar;
+    public TowerBase Tower;
     
     private void OnMouseDown()
     {
