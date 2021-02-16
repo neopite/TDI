@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
-public class TowerGridCell : MonoBehaviour
+public class TowerGridCell : CellBase
 {
     private GameObject _towerSelectionBar;
     public TowerBase Tower;

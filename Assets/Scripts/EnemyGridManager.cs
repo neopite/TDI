@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,8 @@ namespace DefaultNamespace
         public Grid _enemyPreviewGrid;
         public List<TowerGridCell> _towerGridsTowerCells;
         public List<TowerGridCell> _previewEnemyCells;
-
+        public WavesList ListOfWaves = new WavesList();
+        //public List<Wave> InitedWaves;
         private void Awake()
         {
             if (Instance == null)

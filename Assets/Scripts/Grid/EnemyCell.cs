@@ -1,6 +1,6 @@
 ﻿namespace DefaultNamespace
 {
-    public class EnemyGrid : Grid
+    public class EnemyCell : CellBase
     {
         
     }
