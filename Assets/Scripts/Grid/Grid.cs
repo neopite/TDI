@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DefaultNamespace;
-using JetBrains.Annotations;
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class Grid<T> : MonoBehaviour where T : CellBase
 {
     [SerializeField] private GameObject _tileSprite;
 
@@ -33,16 +30,16 @@ public class Grid : MonoBehaviour
     public GridPosition GridPos;
 
 
-    public List<TowerGridCell> CreateGrid()
+    public List<T> CreateGrid()
     {
-        List<TowerGridCell> _gridCells = new List<TowerGridCell>();
+        List<T> _gridCells = new List<T>();
         SetPivotForGrid();
         for (int row = rows; 0 < row ; row--)
         {
             for (int column = 0; column < columns; column++)
             {
                 GameObject tile = Instantiate(_tileSprite, transform);
-                TowerGridCell tileComponent = tile.GetComponent<TowerGridCell>();
+                T tileComponent = tile.GetComponent<T>();
                 _gridCells.Add(tileComponent);
                 var transformPosition = tile.transform.position;
                 transformPosition.z = -10;
@@ -56,7 +53,7 @@ public class Grid : MonoBehaviour
 
     public virtual void SetPivotForGrid()
     {
-        Grid enemyGrid = EnemyGridManager.Instance._enemyGrid;
+        Grid<EnemyCell> enemyGrid = EnemyGridManager.Instance._enemyGrid;
         Vector2 enemyGridPivot = enemyGrid.pivot;
         if (GridPos == GridPosition.Center)
         {
@@ -79,7 +76,7 @@ public class Grid : MonoBehaviour
         }
     }
     
-    public virtual void SpawnTile(int x, int y , GameObject tile)
+    public  void SpawnTile(int x, int y , GameObject tile)
     {
         tile.transform.position = new Vector2(x*TilesOffset+pivot.x,
             y * TilesOffset- pivot.y );

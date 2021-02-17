@@ -8,12 +8,30 @@ namespace DefaultNamespace.Enemy
         public int Level;
         private int currentHp;
         public EnemyType type;
+        [SerializeField]public Vector2 Direction;
+        [SerializeField]private float speed;
+        [SerializeField]private Vector3 _currentTargetTile;
+        [SerializeField] private bool _isMoving;
+        private Transform _enemyPosition;
 
-        private void Start()
+        public void Start()
         {
             currentHp = Level;
+            _enemyPosition = gameObject.transform;
         }
 
+        public void Update()
+        {
+            if (_isMoving)
+            {
+                _enemyPosition.position = new Vector2(_enemyPosition.position.x, _enemyPosition.position.y + (Direction.y * speed * Time.deltaTime));
+                if (Vector3.Distance(_enemyPosition.position,_currentTargetTile) < 0.05)
+                {
+                    _isMoving = false;
+                }
+            }
+        }
+        
         public void ReceiveDamage(int damage)
         {
             currentHp -= damage;
@@ -22,14 +40,10 @@ namespace DefaultNamespace.Enemy
                 Destroy(gameObject);
             }
         }
-        public enum EnemyType
+        public void ChangeStage(Vector3 nextTilePosition)
         {
-            Circle,Square,Triangle
-        }
-
-        public void ChangeStage(Vector2 nextTilePosition)
-        {
-            gameObject.transform.position = nextTilePosition;
+            _currentTargetTile= nextTilePosition;
+            _isMoving = true;
         }
     }
 }

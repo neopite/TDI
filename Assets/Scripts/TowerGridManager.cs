@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TowerGridManager : MonoBehaviour
 {
-    public Grid _leftTowerGrid;
-    public Grid _rightTowerGrid;
+    public TowerGrid _leftTowerGrid;
+    public TowerGrid _rightTowerGrid;
    [SerializeField] private TowerGridCell _lastPressedCell;
    public List<TowerGridCell> _towerCellsList;
 

@@ -331,13 +331,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 291755691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8002da2a2e03eca4cb80af13464c8a51, type: 3}
+  m_Script: {fileID: 11500000, guid: 85873965a24343b2aa3766aae85aaea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tileSprite: {fileID: 5701495568694218479, guid: a35adaee806e788499addabc0e908b4a,
     type: 3}
   rows: 5
-  columns: 3
+  columns: 2
   _verticalGridOffset: 0
   TilesOffset: 1.1
   OffsetBetweenGrids: 1
@@ -383,16 +383,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 411496261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8002da2a2e03eca4cb80af13464c8a51, type: 3}
+  m_Script: {fileID: 11500000, guid: 85873965a24343b2aa3766aae85aaea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tileSprite: {fileID: 5701495568694218479, guid: a35adaee806e788499addabc0e908b4a,
     type: 3}
   rows: 5
-  columns: 3
-  _verticalGridOffset: 0
+  columns: 2
+  _verticalGridOffset: 1
   TilesOffset: 1.1
-  OffsetBetweenGrids: -1
+  OffsetBetweenGrids: -0.99
   pivot: {x: 0, y: 0}
   GridPos: 0
 --- !u!4 &411496263
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 880574675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8002da2a2e03eca4cb80af13464c8a51, type: 3}
+  m_Script: {fileID: 11500000, guid: dfb345ef91db444aabf9a0255d0e7a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1346621868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8002da2a2e03eca4cb80af13464c8a51, type: 3}
+  m_Script: {fileID: 11500000, guid: dfb345ef91db444aabf9a0255d0e7a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
@@ -829,7 +829,7 @@ MonoBehaviour:
   columns: 5
   _verticalGridOffset: 0
   TilesOffset: 1.1
-  OffsetBetweenGrids: 0.25
+  OffsetBetweenGrids: 0.5
   pivot: {x: 0, y: 0}
   GridPos: 2
 --- !u!4 &1346621870
@@ -990,6 +990,7 @@ GameObject:
   - component: {fileID: 1775990304}
   - component: {fileID: 1775990303}
   - component: {fileID: 1775990305}
+  - component: {fileID: 1775990306}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1013,8 +1014,14 @@ MonoBehaviour:
   _enemyPreviewGrid: {fileID: 1346621869}
   _towerGridsTowerCells: []
   _previewEnemyCells: []
-  ListOfWaves:
-    ListOfWaves: []
+  Waves:
+  - ListOfEnemies:
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+  - ListOfEnemies:
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
 --- !u!4 &1775990304
 Transform:
   m_ObjectHideFlags: 0
@@ -1045,3 +1052,15 @@ MonoBehaviour:
   _rightTowerGrid: {fileID: 291755692}
   _lastPressedCell: {fileID: 0}
   _towerCellsList: []
+--- !u!114 &1775990306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775990302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48a090dba9f4b149e3935f4a33410f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
