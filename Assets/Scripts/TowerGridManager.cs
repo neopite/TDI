@@ -35,38 +35,18 @@ public class TowerGridManager : MonoBehaviour
         if (_lastPressedCell != null && _lastPressedCell.Tower==null)
         {
             int cellIndex = _towerCellsList.IndexOf(_lastPressedCell);
-            TowerBase[] listOfTowers;
             TowerBase tower = Instantiate(towerBase, _lastPressedCell.transform);
             if (cellIndex < _towerCellsList.Count / 2)
             {
-                if (_leftTowerGrid.GridTowers.TryGetValue(cellIndex / _leftTowerGrid.Columns, out listOfTowers))
-                {
-                    listOfTowers[cellIndex % _leftTowerGrid.Columns] = tower;
-                    _leftTowerGrid.GridTowers[cellIndex / _leftTowerGrid.Columns] = listOfTowers;
-                }
-                else
-                {
-                    listOfTowers = new TowerBase[_leftTowerGrid.Columns];
-                    listOfTowers[cellIndex % _leftTowerGrid.Columns] = tower;
-                    _leftTowerGrid.GridTowers.Add(cellIndex / _leftTowerGrid.Columns, listOfTowers);
-
-                }
+                int row = cellIndex / _leftTowerGrid.Columns;
+                int col = cellIndex % _leftTowerGrid.Columns;
+                int newCol = (row + 1) * _leftTowerGrid.Columns - cellIndex;
+                _leftTowerGrid.GridTowers[cellIndex / _leftTowerGrid.Columns,newCol-1] = tower;
             }
             else
             {
-                if (_rightTowerGrid.GridTowers.TryGetValue(cellIndex / _rightTowerGrid.Columns, out listOfTowers))
-                {
-                    listOfTowers[cellIndex % _rightTowerGrid.Columns] = tower;
-                    _rightTowerGrid.GridTowers[cellIndex / _rightTowerGrid.Columns - _rightTowerGrid.Rows] = listOfTowers;
-                }
-                else
-                {
-                    listOfTowers = new TowerBase[_rightTowerGrid.Columns];
-                    listOfTowers[cellIndex % _rightTowerGrid.Columns] = tower;
-                    _rightTowerGrid.GridTowers.Add(cellIndex / _rightTowerGrid.Columns - _rightTowerGrid.Rows, listOfTowers);
-                }
-            }
-
+                _rightTowerGrid.GridTowers[cellIndex / _rightTowerGrid.Columns - _rightTowerGrid.Rows,cellIndex % _rightTowerGrid.Columns] = tower;
+            } 
             tower.transform.parent = _lastPressedCell.transform;
             _lastPressedCell.Tower = tower;
             _lastPressedCell = null;
