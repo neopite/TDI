@@ -1023,6 +1023,15 @@ MonoBehaviour:
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+  - ListOfEnemies:
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+  - ListOfEnemies:
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
 --- !u!4 &1775990304
 Transform:
   m_ObjectHideFlags: 0
@@ -1053,6 +1062,7 @@ MonoBehaviour:
   _rightTowerGrid: {fileID: 291755692}
   _lastPressedCell: {fileID: 0}
   _towerCellsList: []
+  towers: []
 --- !u!114 &1775990306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,7 +1247,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2018904613
 MonoBehaviour:

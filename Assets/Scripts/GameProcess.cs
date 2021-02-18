@@ -19,6 +19,7 @@ namespace DefaultNamespace
         private List<EnemyCell> _tiles;
         public bool isLevelStarted;
         public TextMeshProUGUI GameState;
+        private bool isSpawnEnd;
 
         private void Start()
         {
@@ -27,25 +28,27 @@ namespace DefaultNamespace
             _tiles = _enemyGridManager._towerGridsTowerCells;
             _levelWaves = _enemyGridManager.Waves;
             _wavesPosition = new Dictionary<int, List<EnemyBase>>();
-            SpawnWave();
+            StartCoroutine(SpawnWave());
         }
 
         private void Update()
         {
-            if (isLevelStarted)
+            if (isLevelStarted && !isSpawnEnd)
             {
                 List<int> wavesId = _wavesPosition.Keys.ToList();
                 for (int i = 0 ;  i < wavesId.Count ; i++)
                 {
                     MoveWave(wavesId[i]);
                 }
-                SpawnWave();
+                StartCoroutine(SpawnWave());
                 isLevelStarted = false;
             }
         }
 
-        private void SpawnWave()
+        private IEnumerator SpawnWave()
         {
+            isSpawnEnd = true;
+            yield return new WaitForSeconds(.15f);
             if (_levelWaves.Count == _wavesSpawned)
             {
                 Debug.Log("Waves Spanw ended");
@@ -65,6 +68,8 @@ namespace DefaultNamespace
                  _wavesSpawned++;
                  
             }
+
+            isSpawnEnd = false;
         }
 
         private void MoveWave(int waveId)
