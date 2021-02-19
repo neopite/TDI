@@ -2,6 +2,6 @@
 {
     public enum EnemyType
     {
-        Circle,Square,Triangle
+        Circle,Square,Triangle,Rectangle
     }
 }

@@ -26,7 +26,7 @@ namespace DefaultNamespace.Enemy
             if (_isMoving)
             {
                 _enemyPosition.position = new Vector2(_enemyPosition.position.x, _enemyPosition.position.y + (Direction.y * speed * Time.deltaTime));
-                if (Vector3.Distance(_enemyPosition.position,_currentTargetTile) < 0.1)
+                if (Vector3.Distance(_enemyPosition.position,_currentTargetTile) < 0.15)
                 {
                     _isMoving = false;
                     if (GameEvents.Instance.ListOfEnemy.Contains(this))

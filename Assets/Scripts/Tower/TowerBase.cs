@@ -11,7 +11,7 @@ namespace DefaultNamespace
         
         public void Shoot(int damage, EnemyBase target)
         {
-            if (target != null && target.type==EnemyType)
+            if (target != null)
             {
                 target.ReceiveDamage(damage);
                 Debug.Log("Target :" + target.type + " Receive damage");
