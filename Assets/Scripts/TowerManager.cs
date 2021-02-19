@@ -4,7 +4,7 @@ using DefaultNamespace;
 using DefaultNamespace.Enemy;
 using UnityEngine;
 
-public class TowerGridManager : MonoBehaviour
+public class TowerManager : MonoBehaviour
 {
     public TowerGrid _leftTowerGrid;
     public TowerGrid _rightTowerGrid;
@@ -17,7 +17,7 @@ public class TowerGridManager : MonoBehaviour
         set => _lastPressedCell = value;
     }
 
-    public static TowerGridManager Instance;
+    public static TowerManager Instance;
     
     void Start()
     {
@@ -52,4 +52,7 @@ public class TowerGridManager : MonoBehaviour
             _lastPressedCell = null;
         }
     }
+    
+    
+    
 }

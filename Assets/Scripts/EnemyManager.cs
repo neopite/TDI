@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class EnemyGridManager : MonoBehaviour
+    public class EnemyManager : MonoBehaviour
     {
-        public static EnemyGridManager Instance;
+        public static EnemyManager Instance;
         public EnemyGrid _enemyGrid;
         public EnemyGrid _enemyPreviewGrid;
         public List<EnemyCell> _towerGridsTowerCells;

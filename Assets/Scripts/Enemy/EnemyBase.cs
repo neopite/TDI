@@ -28,6 +28,10 @@ namespace DefaultNamespace.Enemy
                 if (Vector3.Distance(_enemyPosition.position,_currentTargetTile) < 0.1)
                 {
                     _isMoving = false;
+                    if (GameEvents.Instance.ListOfEnemy.Contains(this))
+                    {
+                        GameEvents.Instance.DestroyEnemyByGettingTarget(gameObject);
+                    }
                 }
             }
         }
@@ -37,9 +41,16 @@ namespace DefaultNamespace.Enemy
             currentHp -= damage;
             if (currentHp <= 0)
             {
-                Destroy(gameObject);
+                GameEvents.Instance.ListOfEnemy.Add(this);
+                GameEvents.Instance.OnDestroyEnemyByGettingTarget += DestroyEnemy;
             }
         }
+
+        private void DestroyEnemy(GameObject gameObject)
+        {
+            Destroy(gameObject);
+        }
+        
         public void ChangeStage(Vector3 nextTilePosition)
         {
             _currentTargetTile= nextTilePosition;

@@ -5,15 +5,14 @@ using System.Linq;
 using DefaultNamespace.Enemy;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
     public class GameProcess : MonoBehaviour
     {
         private List<Wave> _levelWaves;
-        private EnemyGridManager _enemyGridManager;
-        private TowerGridManager _towerGridManager;
+        private EnemyManager _enemyManager;
+        private TowerManager _towerManager;
         private int _wavesSpawned;
         private Dictionary<int, List<EnemyBase>> _wavesPosition;
         private List<EnemyCell> _tiles;
@@ -23,10 +22,10 @@ namespace DefaultNamespace
 
         private void Start()
         {
-            _enemyGridManager = EnemyGridManager.Instance;
-            _towerGridManager = TowerGridManager.Instance;
-            _tiles = _enemyGridManager._towerGridsTowerCells;
-            _levelWaves = _enemyGridManager.Waves;
+            _enemyManager = EnemyManager.Instance;
+            _towerManager = TowerManager.Instance;
+            _tiles = _enemyManager._towerGridsTowerCells;
+            _levelWaves = _enemyManager.Waves;
             _wavesPosition = new Dictionary<int, List<EnemyBase>>();
             StartCoroutine(SpawnWave());
         }
@@ -40,6 +39,7 @@ namespace DefaultNamespace
                 {
                     MoveWave(wavesId[i]);
                 }
+                ShootWaves();
                 StartCoroutine(SpawnWave());
                 isLevelStarted = false;
             }
@@ -60,7 +60,7 @@ namespace DefaultNamespace
                 { 
                     EnemyBase gm = Instantiate(_levelWaves[_wavesSpawned].ListOfEnemies[i],
                     transform.parent);
-                gm.transform.position = EnemyGridManager.Instance._previewEnemyCells[i].transform.position;
+                gm.transform.position = EnemyManager.Instance._previewEnemyCells[i].transform.position;
                 listOfEnemies.Add(gm);
                 } 
                 _wavesPosition.Add(0, listOfEnemies);
@@ -74,7 +74,7 @@ namespace DefaultNamespace
 
         private void MoveWave(int waveId)
         {
-            if (waveId == _enemyGridManager._enemyGrid.Rows)
+            if (waveId == _enemyManager._enemyGrid.Rows)
             {
                 Debug.Log("Game over");
                 isLevelStarted = false;
@@ -83,14 +83,59 @@ namespace DefaultNamespace
                 for (int i = 0; i < _wavesPosition[waveId].Count; i++)
                 {
                     _wavesPosition[waveId][i]
-                        .ChangeStage(_tiles[waveId * _enemyGridManager._enemyGrid.Columns + i].transform.position);
+                        .ChangeStage(_tiles[waveId * _enemyManager._enemyGrid.Columns + i].transform.position);
                 }
 
             List<EnemyBase> wave = _wavesPosition[waveId];
             _wavesPosition.Remove(waveId);
             _wavesPosition[++waveId] = wave;
         }
-    
+
+        private void ShootWaves()
+        {
+            List<int> wavesRowsPos = _wavesPosition.Keys.ToList();
+            for (int i = 0; i < wavesRowsPos.Count; i++)
+            {
+                ReceiveWaveDamage(wavesRowsPos[i]);
+            }
+        }
+
+        private void ReceiveWaveDamage(int wavePos)
+        {
+
+            TowerBase[,] leftTowers = _towerManager._leftTowerGrid.GridTowers;
+            TowerBase[,] rightTowers = _towerManager._rightTowerGrid.GridTowers;
+            List<EnemyBase> listOfEnemiesAtPos = _wavesPosition[wavePos];
+            wavePos--;
+            for (int i = 0; i < leftTowers.GetLength(1); i++)
+            {
+                if (leftTowers[wavePos, i] != null)
+                {
+                    if (i < listOfEnemiesAtPos.Count)
+                    {
+                       leftTowers[wavePos, i].Shoot(leftTowers[wavePos, i].Level, listOfEnemiesAtPos[0]);
+                       listOfEnemiesAtPos.RemoveAt(0);
+                    }
+                }   
+            }
+
+            for (int i = 0; i < rightTowers.GetLength(1); i++)
+            {
+                if (rightTowers[wavePos, i] != null)
+                {
+                    if (i < listOfEnemiesAtPos.Count)
+                    {
+                        rightTowers[wavePos, i].Shoot(rightTowers[wavePos, i].Level, listOfEnemiesAtPos[listOfEnemiesAtPos.Count-1]);
+                    }
+                } 
+            }
+
+        }
+
+        private void DestroyEnemy(EnemyBase enemyBase)
+        {
+            Destroy(enemyBase);
+        }
 
     public void ChangeLevelState()
         {

@@ -35,7 +35,7 @@ namespace DefaultNamespace
 
         private void CreateTowerAtCell(int towerIndex)
         {
-            TowerGridManager.Instance.CreateTower(ListOfAvailableTowers[towerIndex]);
+            TowerManager.Instance.CreateTower(ListOfAvailableTowers[towerIndex]);
         }
     }
 }

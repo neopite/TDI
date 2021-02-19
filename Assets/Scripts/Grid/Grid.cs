@@ -53,7 +53,7 @@ public class Grid<T> : MonoBehaviour where T : CellBase
 
     public virtual void SetPivotForGrid()
     {
-        Grid<EnemyCell> enemyGrid = EnemyGridManager.Instance._enemyGrid;
+        Grid<EnemyCell> enemyGrid = EnemyManager.Instance._enemyGrid;
         Vector2 enemyGridPivot = enemyGrid.pivot;
         if (GridPos == GridPosition.Center)
         {

@@ -989,9 +989,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1775990304}
-  - component: {fileID: 1775990303}
   - component: {fileID: 1775990305}
   - component: {fileID: 1775990306}
+  - component: {fileID: 1775990307}
+  - component: {fileID: 1775990303}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1019,17 +1020,18 @@ MonoBehaviour:
   - ListOfEnemies:
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
-  - ListOfEnemies:
-    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
-    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
   - ListOfEnemies:
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
-    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
   - ListOfEnemies:
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+  - ListOfEnemies:
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
     - {fileID: 8282628452156054924, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
 --- !u!4 &1775990304
@@ -1062,7 +1064,6 @@ MonoBehaviour:
   _rightTowerGrid: {fileID: 291755692}
   _lastPressedCell: {fileID: 0}
   _towerCellsList: []
-  towers: []
 --- !u!114 &1775990306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,6 +1078,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLevelStarted: 0
   GameState: {fileID: 2002464223}
+--- !u!114 &1775990307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775990302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1775d4ed30549a2a90b6fd6513f7bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListOfEnemy: []
 --- !u!1 &2002464222
 GameObject:
   m_ObjectHideFlags: 0
