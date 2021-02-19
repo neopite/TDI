@@ -3,15 +3,22 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public abstract class TowerBase : MonoBehaviour , IShootable
+    public  class TowerBase : MonoBehaviour , IShootable
     {
         public int Level;
         public uint Cost;
-        public abstract void Shoot(int damage, EnemyBase target);
-
-        public void Update()
+        public EnemyType EnemyType; 
+        
+        public void Shoot(int damage, EnemyBase target)
         {
-            
+            if (target != null && target.type==EnemyType)
+            {
+                target.ReceiveDamage(damage);
+                Debug.Log("Target :" + target.type + " Receive damage");
+            }
         }
+        
+
+       
     }
 }

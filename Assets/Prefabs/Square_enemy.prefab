@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7235521189852728565}
   - component: {fileID: 6636748181413179792}
-  - component: {fileID: 8282628452156054924}
+  - component: {fileID: -6377856622594585752}
   m_Layer: 0
   m_Name: Square_enemy
   m_TagString: Untagged
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8282628452156054924
+--- !u!114 &-6377856622594585752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,12 +91,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 496207769318898116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 127288bd22674bcabac779d73ac4707e, type: 3}
+  m_Script: {fileID: 11500000, guid: 16942b126c024e048280b046c1d742e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Level: 1
   type: 1
   Direction: {x: 0, y: -1}
   speed: 5
-  _currentTargetTile: {x: -1.1727272, y: 2.5}
+  _currentTargetTile: {x: 0, y: 0, z: 0}
   _isMoving: 0
+  ColumnId: 0

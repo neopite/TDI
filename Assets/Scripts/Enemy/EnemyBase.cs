@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefaultNamespace.Enemy
 {
-    public abstract class EnemyBase : MonoBehaviour , IDamageable
+    public  class EnemyBase : MonoBehaviour , IDamageable
     {
         public int Level;
         private int currentHp;

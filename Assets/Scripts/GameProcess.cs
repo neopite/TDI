@@ -58,6 +58,7 @@ namespace DefaultNamespace
                 List<EnemyBase> listOfEnemies = new List<EnemyBase>(); 
                 for (int i = 0; i < _levelWaves[_wavesSpawned].ListOfEnemies.Count; i++) 
                 { 
+
                     EnemyBase gm = Instantiate(_levelWaves[_wavesSpawned].ListOfEnemies[i],
                     transform.parent);
                     gm.ColumnId = i;
@@ -98,7 +99,14 @@ namespace DefaultNamespace
             List<int> wavesRowsPos = _wavesPosition.Keys.ToList();
             for (int i = 0; i < wavesRowsPos.Count; i++)
             {
-                ReceiveWaveDamage(wavesRowsPos[i]);
+                if (_wavesPosition[wavesRowsPos[i]].Count != 0)
+                {
+                    ReceiveWaveDamage(wavesRowsPos[i]);
+                }
+                else
+                {
+                    _wavesPosition.Remove(wavesRowsPos[i]);
+                }
             }
         }
 
@@ -113,10 +121,14 @@ namespace DefaultNamespace
             {
                 if (leftTowers[wavePos, i] != null)
                 {
-                    if (i < listOfEnemiesAtPos.Count)
+                    if (i <= listOfEnemiesAtPos.Count)
                     {
-                       leftTowers[wavePos, i].Shoot(leftTowers[wavePos, i].Level, listOfEnemiesAtPos[0]);
-                       listOfEnemiesAtPos.RemoveAt(0);
+                        if (leftTowers[wavePos, i].EnemyType == listOfEnemiesAtPos[0].type)
+                        {
+                            leftTowers[wavePos, i].Shoot(leftTowers[wavePos, i].Level, listOfEnemiesAtPos[0]);
+                            listOfEnemiesAtPos.RemoveAt(0);
+
+                        }
                     }
                 }   
             }
@@ -127,11 +139,14 @@ namespace DefaultNamespace
                 {
                     if (i < listOfEnemiesAtPos.Count)
                     {
-                        rightTowers[wavePos, i].Shoot(rightTowers[wavePos, i].Level, listOfEnemiesAtPos[listOfEnemiesAtPos.Count-1]);
+                        if (rightTowers[wavePos, i].EnemyType == listOfEnemiesAtPos[listOfEnemiesAtPos.Count-1].type)
+                        {
+                            rightTowers[wavePos, i].Shoot(rightTowers[wavePos, i].Level, listOfEnemiesAtPos[listOfEnemiesAtPos.Count-1]);
+                            listOfEnemiesAtPos.RemoveAt(listOfEnemiesAtPos.Count-1);
+                        }
                     }
                 } 
             }
-
         }
 
         private void DestroyEnemy(EnemyBase enemyBase)
@@ -139,7 +154,7 @@ namespace DefaultNamespace
             Destroy(enemyBase);
         }
 
-    public void ChangeLevelState()
+         public void ChangeLevelState()
         {
             isLevelStarted = !isLevelStarted;
             GameState.text = isLevelStarted ? "Pause" : "Continue";
