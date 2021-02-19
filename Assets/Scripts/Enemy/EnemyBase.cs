@@ -13,6 +13,7 @@ namespace DefaultNamespace.Enemy
         [SerializeField]private Vector3 _currentTargetTile;
         public bool _isMoving;
         private Transform _enemyPosition;
+        public int ColumnId;
 
         public void Start()
         {

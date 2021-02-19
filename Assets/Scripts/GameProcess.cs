@@ -60,6 +60,7 @@ namespace DefaultNamespace
                 { 
                     EnemyBase gm = Instantiate(_levelWaves[_wavesSpawned].ListOfEnemies[i],
                     transform.parent);
+                    gm.ColumnId = i;
                 gm.transform.position = EnemyManager.Instance._previewEnemyCells[i].transform.position;
                 listOfEnemies.Add(gm);
                 } 
@@ -82,8 +83,9 @@ namespace DefaultNamespace
             else
                 for (int i = 0; i < _wavesPosition[waveId].Count; i++)
                 {
+                    int enemyColumnId = _wavesPosition[waveId][i].ColumnId;
                     _wavesPosition[waveId][i]
-                        .ChangeStage(_tiles[waveId * _enemyManager._enemyGrid.Columns + i].transform.position);
+                        .ChangeStage(_tiles[waveId * _enemyManager._enemyGrid.Columns + enemyColumnId].transform.position);
                 }
 
             List<EnemyBase> wave = _wavesPosition[waveId];
