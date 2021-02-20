@@ -36,7 +36,7 @@ namespace DefaultNamespace
         {
             if (isLevelStarted && !isSpawnEnd)
             {
-                List<int> wavesId = _wavesPosition.Keys.ToList();
+                List<int> wavesId = _wavesPosition.Keys.OrderByDescending(x=>x).ToList();
                 for (int i = 0 ;  i < wavesId.Count ; i++)
                 {
                     MoveWave(wavesId[i]);
@@ -54,7 +54,7 @@ namespace DefaultNamespace
             yield return new WaitForSeconds(.15f);
             if (_levelWaves.Count == _wavesSpawned)
             {
-                Debug.Log("Waves Spanw ended");
+                Debug.Log("Waves Spawn ended");
             }
             else
             {
@@ -62,7 +62,7 @@ namespace DefaultNamespace
                 for (int i = 0; i < _levelWaves[_wavesSpawned].ListOfEnemies.Count; i++) 
                 {
                     EnemyBase gm = Instantiate(_levelWaves[_wavesSpawned].ListOfEnemies[i],
-                    transform.parent);
+                    transform);
                     gm.ColumnId = i;
                 gm.transform.position = EnemyManager.Instance._previewEnemyCells[i].transform.position;
                 listOfEnemies.Add(gm);
@@ -128,24 +128,28 @@ namespace DefaultNamespace
                 }   
             }
 
-            for (int i = 0; i < rightTowers.GetLength(1); i++)
+            if (listOfEnemiesAtPos.Count != 0)
             {
-                if (rightTowers[wavePos, i] != null)
+                for (int i = 0; i < rightTowers.GetLength(1); i++)
                 {
-                    if (i <= listOfEnemiesAtPos.Count)
+                    if (rightTowers[wavePos, i] != null)
                     {
-                        if (rightTowers[wavePos, i].EnemyType == listOfEnemiesAtPos[listOfEnemiesAtPos.Count-1].type)
+                        if (i <= listOfEnemiesAtPos.Count)
                         {
-                            rightTowers[wavePos, i].Shoot(rightTowers[wavePos, i].Level, listOfEnemiesAtPos[listOfEnemiesAtPos.Count-1]);
-                            listOfEnemiesAtPos.RemoveAt(listOfEnemiesAtPos.Count-1);
+                            if (rightTowers[wavePos, i].EnemyType == listOfEnemiesAtPos.Last().type)
+                            {
+                                rightTowers[wavePos, i].Shoot(rightTowers[wavePos, i].Level, listOfEnemiesAtPos[listOfEnemiesAtPos.Count-1]);
+                                listOfEnemiesAtPos.RemoveAt(listOfEnemiesAtPos.Count-1);
+                            }
                         }
-                    }
-                } 
+                    } 
+                }     
             }
-
+            
             if (listOfEnemiesAtPos.Count == 0)
             {
                 _wavesPosition.Remove(wavePos+1);
+                Debug.Log("stop");
             }
         }
 
