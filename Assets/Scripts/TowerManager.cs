@@ -6,10 +6,16 @@ using UnityEngine;
 
 public class TowerManager : MonoBehaviour
 {
-    public TowerGrid _leftTowerGrid;
-    public TowerGrid _rightTowerGrid;
+    public TowerGrid leftTowerGrid;
+    public TowerGrid rightTowerGrid;
    [SerializeField] private TowerGridCell _lastPressedCell;
-   public List<TowerGridCell> _towerCellsList;
+   private List<TowerGridCell> _towerCellsList;
+
+   public List<TowerGridCell> TowerGridCells
+   {
+       get => _towerCellsList;
+       set => _towerCellsList = value;
+   }
 
     public TowerGridCell LastPressedCell
     {
@@ -26,29 +32,28 @@ public class TowerManager : MonoBehaviour
             Instance = this;
             _towerCellsList = new List<TowerGridCell>();
         }else Destroy(gameObject);
-        _towerCellsList.AddRange(_leftTowerGrid.CreateGrid());
-        _towerCellsList.AddRange(_rightTowerGrid.CreateGrid());
+        _towerCellsList.AddRange(leftTowerGrid.CreateGrid());
+        _towerCellsList.AddRange(rightTowerGrid.CreateGrid());
     }
 
     public void CreateTower(TowerBase towerBase) 
     {
-        if (_lastPressedCell != null && _lastPressedCell.Tower==null)
+        if (_lastPressedCell != null && _lastPressedCell.tower==null)
         {
             int cellIndex = _towerCellsList.IndexOf(_lastPressedCell);
             TowerBase tower = Instantiate(towerBase, _lastPressedCell.transform);
-            if (cellIndex < _towerCellsList.Count / 2)
+            if (cellIndex < leftTowerGrid.Columns*leftTowerGrid.Rows)
             {
-                int row = cellIndex / _leftTowerGrid.Columns;
-                int col = cellIndex % _leftTowerGrid.Columns;
-                int newCol = (row + 1) * _leftTowerGrid.Columns - cellIndex;
-                _leftTowerGrid.GridTowers[cellIndex / _leftTowerGrid.Columns,newCol-1] = tower;
+                int row = cellIndex / leftTowerGrid.Columns;
+                int newCol = (row + 1) * leftTowerGrid.Columns - cellIndex;
+                leftTowerGrid.GridTowers[cellIndex / leftTowerGrid.Columns,newCol-1] = tower;
             }
             else
             {
-                _rightTowerGrid.GridTowers[cellIndex / _rightTowerGrid.Columns - _rightTowerGrid.Rows,cellIndex % _rightTowerGrid.Columns] = tower;
+                rightTowerGrid.GridTowers[cellIndex / rightTowerGrid.Columns - rightTowerGrid.Rows,cellIndex % rightTowerGrid.Columns] = tower;
             } 
             tower.transform.parent = _lastPressedCell.transform;
-            _lastPressedCell.Tower = tower;
+            _lastPressedCell.tower = tower;
             _lastPressedCell = null;
         }
     }

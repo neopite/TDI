@@ -5,9 +5,9 @@ namespace DefaultNamespace
 {
     public  class TowerBase : MonoBehaviour , IShootable
     {
-        public int Level;
-        public uint Cost;
-        public EnemyType EnemyType; 
+        public int level;
+        public uint cost;
+        public EnemyType enemyType; 
         
         public void Shoot(int damage, EnemyBase target)
         {

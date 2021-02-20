@@ -7,12 +7,12 @@ namespace DefaultNamespace
     public class EnemyManager : MonoBehaviour
     {
         public static EnemyManager Instance;
-        public EnemyGrid _enemyGrid;
-        public EnemyGrid _enemyPreviewGrid;
-        public List<EnemyCell> _towerGridsTowerCells;
-        public List<EnemyCell> _previewEnemyCells;
-        public List<Wave> Waves;
-        public int ReplyCountWaves;
+        public EnemyGrid enemyGrid;
+        public EnemyGrid enemyPreviewGrid;
+        public List<EnemyCell> towerGridsTowerCells;
+        public List<EnemyCell> previewEnemyCells;
+        public List<Wave> waves;
+        public int replyCountWaves;
         private void Awake()
         {
             if (Instance == null)
@@ -21,14 +21,14 @@ namespace DefaultNamespace
                 
             }else Destroy(gameObject);
 
-            for (int itter = 0; itter < ReplyCountWaves; itter++)
+            for (int i = 0; i < replyCountWaves; i++)
             {
-                Waves.AddRange(Waves);
+                waves.AddRange(waves);
             }
-            _towerGridsTowerCells = new List<EnemyCell>();
-            _previewEnemyCells = new List<EnemyCell>();
-            _towerGridsTowerCells.AddRange(_enemyGrid.CreateGrid());
-            _previewEnemyCells.AddRange(_enemyPreviewGrid.CreateGrid());
+            towerGridsTowerCells = new List<EnemyCell>();
+            previewEnemyCells = new List<EnemyCell>();
+            towerGridsTowerCells.AddRange(enemyGrid.CreateGrid());
+            previewEnemyCells.AddRange(enemyPreviewGrid.CreateGrid());
         }
     }
 }

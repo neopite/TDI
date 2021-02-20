@@ -4,43 +4,38 @@ using UnityEngine;
 
 public class Grid<T> : MonoBehaviour where T : CellBase
 {
-    [SerializeField] private GameObject _tileSprite;
-
-
-    [Range(1,9)][SerializeField] private int rows;
-    [Range(1,9)][SerializeField] private int columns;
-    [Range(0,3)][SerializeField]private float _verticalGridOffset;
-    [Range(1,2)]public float TilesOffset = 1.1f;
-    [Range(-2,2)]public float OffsetBetweenGrids;
+    [SerializeField] private GameObject tileSprite;
+    [Range(1,9)][SerializeField] private int _rows;
+    [Range(1,9)][SerializeField] private int _columns;
+    [Range(0,3)][SerializeField]private float verticalGridOffset;
+    [Range(1,2)]public float tilesOffset = 1.1f;
+    [Range(-2,2)]public float offsetBetweenGrids;
+    public GridPosition gridPos;
+    private Vector2 _pivot;
+    
     public int Rows
-    {
-        get => rows;
-        set => rows = value;
+    { 
+        get => _rows;
+        set => _rows = value;
     }
 
     public int Columns
     {
-        get => columns;
-        private set => columns = value;
+        get => _columns;
+        private set => _columns = value;
     }
     
-    private int _horizontal;
-    private float _vertical;
-    public Vector2 pivot;
-    public GridPosition GridPos;
-
-
     public List<T> CreateGrid()
     {
-        List<T> _gridCells = new List<T>();
+        List<T> gridCells = new List<T>();
         SetPivotForGrid();
-        for (int row = rows; 0 < row ; row--)
+        for (int row = _rows; 0 < row ; row--)
         {
-            for (int column = 0; column < columns; column++)
+            for (int column = 0; column < _columns; column++)
             {
-                GameObject tile = Instantiate(_tileSprite, transform);
+                GameObject tile = Instantiate(tileSprite, transform);
                 T tileComponent = tile.GetComponent<T>();
-                _gridCells.Add(tileComponent);
+                gridCells.Add(tileComponent);
                 var transformPosition = tile.transform.position;
                 transformPosition.z = -10;
                 tile.transform.position = transformPosition;
@@ -48,38 +43,37 @@ public class Grid<T> : MonoBehaviour where T : CellBase
             }
         }
 
-        return _gridCells;
+        return gridCells;
     }
 
-    public virtual void SetPivotForGrid()
+    private void SetPivotForGrid()
     {
-        Grid<EnemyCell> enemyGrid = EnemyManager.Instance._enemyGrid;
-        Vector2 enemyGridPivot = enemyGrid.pivot;
-        if (GridPos == GridPosition.Center)
+        Grid<EnemyCell> enemyGrid = EnemyManager.Instance.enemyGrid;
+        Vector2 enemyGridPivot = enemyGrid._pivot;
+        if (gridPos == GridPosition.Center)
         {
-            _vertical = (int) Camera.main.orthographicSize;
-            _horizontal = Mathf.RoundToInt(_vertical * Screen.width / Screen.height);
-            pivot = new Vector2((float) (-columns / 2.0 / TilesOffset), _vertical - (rows/2)-_verticalGridOffset);
+            float vertical= (int) Camera.main.orthographicSize;
+            _pivot = new Vector2((float) (-_columns / 2.0 / tilesOffset), vertical - (_rows/2)-verticalGridOffset);
         }
-        else if(GridPos == GridPosition.Left)
+        else if(gridPos == GridPosition.Left)
         {
-            pivot = new Vector2(enemyGridPivot.x - Columns + OffsetBetweenGrids, enemyGridPivot.y);
-        }else if (GridPos == GridPosition.Right)
+            _pivot = new Vector2(enemyGridPivot.x - Columns + offsetBetweenGrids, enemyGridPivot.y);
+        }else if (gridPos == GridPosition.Right)
         {
-            pivot = new Vector2(enemyGridPivot.x + enemyGrid.columns + OffsetBetweenGrids, enemyGridPivot.y);
-        }else if (GridPos == GridPosition.Top)
+            _pivot = new Vector2(enemyGridPivot.x + enemyGrid._columns + offsetBetweenGrids, enemyGridPivot.y);
+        }else if (gridPos == GridPosition.Top)
         {
-            pivot = new Vector2(enemyGridPivot.x, -(enemyGridPivot.y + OffsetBetweenGrids));
-        }else if (GridPos == GridPosition.Bottom)
+            _pivot = new Vector2(enemyGridPivot.x, -(enemyGridPivot.y + offsetBetweenGrids));
+        }else if (gridPos == GridPosition.Bottom)
         {
-            pivot = new Vector2(enemyGridPivot.x, enemyGridPivot.y + enemyGrid.rows - OffsetBetweenGrids);
+            _pivot = new Vector2(enemyGridPivot.x, enemyGridPivot.y + enemyGrid._rows - offsetBetweenGrids);
         }
     }
     
-    public  void SpawnTile(int x, int y , GameObject tile)
+    private void SpawnTile(int x, int y , GameObject tile)
     {
-        tile.transform.position = new Vector2(x*TilesOffset+pivot.x,
-            y * TilesOffset- pivot.y );
+        tile.transform.position = new Vector2(x*tilesOffset+_pivot.x,
+            y * tilesOffset- _pivot.y );
     }
 
     public enum GridPosition

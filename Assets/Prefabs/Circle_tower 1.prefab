@@ -94,6 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d164a0b343ed47b7be28cce27bcea311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 1
-  Cost: 1
-  EnemyType: 0
+  level: 1
+  cost: 1
+  enemyType: 0

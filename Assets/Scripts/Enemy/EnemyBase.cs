@@ -1,35 +1,37 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DefaultNamespace.Enemy
 {
     public  class EnemyBase : MonoBehaviour , IDamageable
     {
-        public int Level;
-        private int currentHp;
+        public int level;
+        private int _currentHp;
         public EnemyType type;
-        [SerializeField]public Vector2 Direction;
-        [SerializeField]private float speed;
+        public int columnId;
+        public bool isMoving;
+        private Transform _transform;
+        
+        [SerializeField]public Vector2 direction;
+        [SerializeField]private float _speed;
         [SerializeField]private Vector3 _currentTargetTile;
-        public bool _isMoving;
-        private Transform _enemyPosition;
-        public int ColumnId;
 
         public void Start()
         {
-            currentHp = Level;
-            _enemyPosition = gameObject.transform;
+            _currentHp = level;
+            _transform = gameObject.transform;
         }
 
         public void Update()
         {
-            if (_isMoving)
+            if (isMoving)
             {
-                _enemyPosition.position = new Vector2(_enemyPosition.position.x, _enemyPosition.position.y + (Direction.y * speed * Time.deltaTime));
-                if (Vector3.Distance(_enemyPosition.position,_currentTargetTile) < 0.15)
+                var position = _transform.position;
+                position = new Vector2(position.x, position.y + (direction.y * _speed * Time.deltaTime));
+                _transform.position = position;
+                if (Vector3.Distance(_transform.position,_currentTargetTile) < 0.15)
                 {
-                    _isMoving = false;
-                    if (GameEvents.Instance.ListOfEnemy.Contains(this))
+                    isMoving = false;
+                    if (GameEvents.Instance.listOfEnemy.Contains(this))
                     {
                         GameEvents.Instance.DestroyEnemyByGettingTarget(gameObject);
                     }
@@ -39,23 +41,23 @@ namespace DefaultNamespace.Enemy
         
         public void ReceiveDamage(int damage)
         {
-            currentHp -= damage;
-            if (currentHp <= 0)
+            _currentHp -= damage;
+            if (_currentHp <= 0)
             {
-                GameEvents.Instance.ListOfEnemy.Add(this);
+                GameEvents.Instance.listOfEnemy.Add(this);
                 GameEvents.Instance.OnDestroyEnemyByGettingTarget += DestroyEnemy;
             }
         }
 
-        private void DestroyEnemy(GameObject gameObject)
+        private void DestroyEnemy(GameObject enemyObj)
         {
-            Destroy(gameObject);
+            Destroy(enemyObj);
         }
         
         public void ChangeStage(Vector3 nextTilePosition)
         {
             _currentTargetTile= nextTilePosition;
-            _isMoving = true;
+            isMoving = true;
         }
     }
 }

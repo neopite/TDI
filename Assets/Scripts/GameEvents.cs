@@ -10,19 +10,13 @@ namespace DefaultNamespace
         public static GameEvents Instance;
 
         public Action<GameObject> OnDestroyEnemyByGettingTarget;
-        public List<EnemyBase> ListOfEnemy;
+        public List<EnemyBase> listOfEnemy;
 
         public void DestroyEnemyByGettingTarget(GameObject enemy)
         {
-            if (OnDestroyEnemyByGettingTarget != null)
-            {
-                OnDestroyEnemyByGettingTarget(enemy);
-            }
+            OnDestroyEnemyByGettingTarget?.Invoke(enemy);
         }
-        
-
-
-
+ 
         public void Start()
         {
             if (Instance != null)

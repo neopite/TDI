@@ -350,15 +350,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85873965a24343b2aa3766aae85aaea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 5701495568694218479, guid: a35adaee806e788499addabc0e908b4a,
+  tileSprite: {fileID: 5701495568694218479, guid: a35adaee806e788499addabc0e908b4a,
     type: 3}
-  rows: 5
-  columns: 2
-  _verticalGridOffset: 0
-  TilesOffset: 1.1
-  OffsetBetweenGrids: 1
-  pivot: {x: 0, y: 0}
-  GridPos: 1
+  _rows: 5
+  _columns: 2
+  verticalGridOffset: 0
+  tilesOffset: 1.1
+  offsetBetweenGrids: 1
+  gridPos: 1
 --- !u!4 &291755693
 Transform:
   m_ObjectHideFlags: 0
@@ -402,15 +401,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85873965a24343b2aa3766aae85aaea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 5701495568694218479, guid: a35adaee806e788499addabc0e908b4a,
+  tileSprite: {fileID: 5701495568694218479, guid: a35adaee806e788499addabc0e908b4a,
     type: 3}
-  rows: 5
-  columns: 2
-  _verticalGridOffset: 1
-  TilesOffset: 1.1
-  OffsetBetweenGrids: -0.99
-  pivot: {x: 0, y: 0}
-  GridPos: 0
+  _rows: 5
+  _columns: 2
+  verticalGridOffset: 0
+  tilesOffset: 1.1
+  offsetBetweenGrids: -1
+  gridPos: 0
 --- !u!4 &411496263
 Transform:
   m_ObjectHideFlags: 0
@@ -631,15 +629,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb345ef91db444aabf9a0255d0e7a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
+  tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
     type: 3}
-  rows: 5
-  columns: 5
-  _verticalGridOffset: 0
-  TilesOffset: 1.1
-  OffsetBetweenGrids: 0
-  pivot: {x: 0, y: 0}
-  GridPos: 4
+  _rows: 5
+  _columns: 5
+  verticalGridOffset: 0
+  tilesOffset: 1.1
+  offsetBetweenGrids: 0
+  gridPos: 4
 --- !u!4 &880574677
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,15 +1047,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb345ef91db444aabf9a0255d0e7a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
+  tileSprite: {fileID: 3968809209378177393, guid: abacc74eac428754f91f5feb57108061,
     type: 3}
-  rows: 1
-  columns: 5
-  _verticalGridOffset: 0
-  TilesOffset: 1.1
-  OffsetBetweenGrids: 0.5
-  pivot: {x: 0, y: 0}
-  GridPos: 2
+  _rows: 1
+  _columns: 5
+  verticalGridOffset: 0
+  tilesOffset: 1.1
+  offsetBetweenGrids: 0
+  gridPos: 2
 --- !u!4 &1346621870
 Transform:
   m_ObjectHideFlags: 0
@@ -1238,27 +1234,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ea3fac7f0c4642b34c945c916e8043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyGrid: {fileID: 880574676}
-  _enemyPreviewGrid: {fileID: 1346621869}
-  _towerGridsTowerCells: []
-  _previewEnemyCells: []
-  Waves:
+  enemyGrid: {fileID: 880574676}
+  enemyPreviewGrid: {fileID: 1346621869}
+  towerGridsTowerCells: []
+  previewEnemyCells: []
+  waves:
   - ListOfEnemies:
-    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
     - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
     - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
-    - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
-  - ListOfEnemies:
-    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
-    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
-  - ListOfEnemies:
-    - {fileID: 1322960798207487659, guid: 74b2f2beeb96a7e4b98730a7013b2465, type: 3}
-    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
     - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
   - ListOfEnemies:
+    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
     - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
+  - ListOfEnemies:
+    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
     - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
-  ReplyCountWaves: 2
+    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
+  - ListOfEnemies:
+    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
+    - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
+  replyCountWaves: 0
 --- !u!4 &1775990304
 Transform:
   m_ObjectHideFlags: 0
@@ -1285,10 +1282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca496103e78e6c145b4eb2b4c93e3e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftTowerGrid: {fileID: 411496262}
-  _rightTowerGrid: {fileID: 291755692}
+  leftTowerGrid: {fileID: 411496262}
+  rightTowerGrid: {fileID: 291755692}
   _lastPressedCell: {fileID: 0}
-  _towerCellsList: []
 --- !u!114 &1775990306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,8 +1298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLevelStarted: 0
-  GameState: {fileID: 2002464223}
-  GameOver: {fileID: 531294346}
+  gameState: {fileID: 2002464223}
+  gameOver: {fileID: 531294346}
 --- !u!114 &1775990307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,7 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1775d4ed30549a2a90b6fd6513f7bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ListOfEnemy: []
+  listOfEnemy: []
 --- !u!1 &2002464222
 GameObject:
   m_ObjectHideFlags: 0

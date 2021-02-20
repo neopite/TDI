@@ -7,7 +7,7 @@ using UnityEngine;
 public class TowerGridCell : CellBase
 {
     private GameObject _towerSelectionBar;
-    public TowerBase Tower;
+    public TowerBase tower;
     
     private void OnMouseDown()
     {
