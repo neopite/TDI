@@ -14,9 +14,10 @@ namespace DefaultNamespace.Interaction
         }
         public override void Interact()
         {
-            float newTowerCost = _percentUpPerUpgrade / 100 * _tower.cost ;
+            float newTowerCost = _percentUpPerUpgrade * _tower.cost  / 100 + _tower.cost;
             if(PlayerData.Instance.IsEnoughMoney(newTowerCost))
             {
+                MoneyEvents.Instance.ChangePlayerMoney(-newTowerCost);
                 _tower.cost = newTowerCost;
                 _tower.level++;
             }

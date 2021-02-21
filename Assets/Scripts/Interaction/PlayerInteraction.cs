@@ -7,6 +7,7 @@ namespace DefaultNamespace.Interaction
     {
         [SerializeField]private float _doubleTapTime;
         private float _prevTapTime;
+        private Interactable _lastPressedObject;
         public void Start()
         {
             
@@ -29,15 +30,20 @@ namespace DefaultNamespace.Interaction
 
         private void HandleInteraction(Interactable interactable)
         {
-            Interactable.InteractionType interactionType = interactable.interactType;
-            switch (interactionType)
+            switch (interactable.InteractType)
             {
                 case Interactable.InteractionType.DoubleTap :
-                    if (Time.time - _prevTapTime < _doubleTapTime)
+                    if (Time.time - _prevTapTime < _doubleTapTime && _lastPressedObject == interactable)
                     {
+                        _prevTapTime = 0;
+                        _lastPressedObject = null;
                         interactable.Interact();
                     }
-                    _prevTapTime = Time.deltaTime;
+                    else
+                    {
+                        _lastPressedObject = interactable;
+                        _prevTapTime = Time.time;
+                    }
                     break;
                 default: throw new Exception("Not such Interaction Type as mentioned");
             }
