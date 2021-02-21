@@ -20,6 +20,7 @@ namespace DefaultNamespace.Interaction
                 MoneyEvents.Instance.ChangePlayerMoney(-newTowerCost);
                 _tower.cost = newTowerCost;
                 _tower.level++;
+                TowerUpgradeEvents.Instance.UpgradeTower(_tower);
             }
         }
     }

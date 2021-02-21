@@ -6,11 +6,11 @@ namespace DefaultNamespace
     public class TowerUpgradeEvents : MonoBehaviour
     {
         public static TowerUpgradeEvents Instance;
-        public Action<int> OnUpgradeTower;
+        public Action<TowerBase> OnUpgradeTower;
 
-        public void UpgradeTower(int newLevel)
+        public void UpgradeTower(TowerBase towerBase)
         {
-            OnUpgradeTower?.Invoke(newLevel);
+            OnUpgradeTower?.Invoke(towerBase);
         }
 
         public void Start()

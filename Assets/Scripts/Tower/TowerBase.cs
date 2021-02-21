@@ -1,4 +1,6 @@
-﻿using DefaultNamespace.Enemy;
+﻿using System;
+using DefaultNamespace.Enemy;
+using TMPro;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -7,8 +9,15 @@ namespace DefaultNamespace
     {
         public int level;
         public float cost;
-        public EnemyType enemyType; 
-        
+        public EnemyType enemyType;
+        [SerializeField]private TextMeshProUGUI _levelView;
+
+        private void Start()
+        {
+            ChangeLevelOnView(this);
+            TowerUpgradeEvents.Instance.OnUpgradeTower += ChangeLevelOnView;
+        }
+
         public void Shoot(int damage, EnemyBase target)
         {
             if (target != null)
@@ -18,7 +27,9 @@ namespace DefaultNamespace
             }
         }
         
-
-       
+        private void ChangeLevelOnView(TowerBase tower)
+        {
+            tower._levelView.text = level.ToString();
+        }
     }
 }
