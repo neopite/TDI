@@ -9,19 +9,7 @@ namespace DefaultNamespace
     {
         public List<TowerBase> ListOfAvailableTowers;
         public Button ItemPrefab;
-
-        /*private void Start()
-        {
-            for (int i = 0; i < ListOfAvailableTowers.Count; i++)
-            {
-                GameObject gameObject = new GameObject();
-                Image image = gameObject.AddComponent<Image>();
-                image.sprite = ListOfAvailableTowers[i].GetComponent<SpriteRenderer>().sprite;
-                RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-                rectTransform.sizeDelta = new Vector2(30, 30);
-                Instantiate(gameObject, transform);
-            }
-        }*/
+        
         private void Start()
         {
             for (int i = 0; i < ListOfAvailableTowers.Count; i++)
@@ -29,13 +17,16 @@ namespace DefaultNamespace
                 Button button = Instantiate(ItemPrefab, transform);
                 button.image.sprite= ListOfAvailableTowers[i].GetComponent<SpriteRenderer>().sprite;
                 int towerIndex = i; 
-                button.onClick.AddListener( () => CreateTowerAtCell(towerIndex));
+                button.onClick.AddListener( () => TryCreateTowerAtCell(towerIndex));
             }
         }
 
-        private void CreateTowerAtCell(int towerIndex)
+        private void TryCreateTowerAtCell(int towerIndex)
         {
-            TowerManager.Instance.CreateTower(ListOfAvailableTowers[towerIndex]);
+            if (PlayerData.Instance.IsEnoughMoney(ListOfAvailableTowers[towerIndex].cost))
+            {
+                TowerManager.Instance.CreateTower(ListOfAvailableTowers[towerIndex]);
+            }else Debug.Log("No money");
         }
     }
 }

@@ -13,6 +13,7 @@ namespace DefaultNamespace
         public List<EnemyCell> previewEnemyCells;
         public List<Wave> waves;
         public int replyCountWaves;
+        public WaveReward waveReward;
         private void Awake()
         {
             if (Instance == null)

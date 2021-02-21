@@ -55,9 +55,7 @@ public class TowerManager : MonoBehaviour
             tower.transform.parent = _lastPressedCell.transform;
             _lastPressedCell.tower = tower;
             _lastPressedCell = null;
+            MoneyEvents.Instance.ChangePlayerMoney(-tower.cost);
         }
     }
-    
-    
-    
 }

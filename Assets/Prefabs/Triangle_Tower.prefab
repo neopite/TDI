@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6675076961478197461}
   - component: {fileID: 2692583371587175125}
   - component: {fileID: 3918656886913726556}
+  - component: {fileID: -71370436442485620}
+  - component: {fileID: 3529915887932130095}
   m_Layer: 0
   m_Name: Triangle_Tower
   m_TagString: Untagged
@@ -95,5 +97,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  cost: 1
+  cost: 7
   enemyType: 2
+--- !u!61 &-71370436442485620
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576659440148701337}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
+--- !u!114 &3529915887932130095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576659440148701337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711cde8e3f1648e1aa0e4081f01c97bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactType: 1
+  _percentUpPerUpgrade: 16

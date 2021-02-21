@@ -10,6 +10,9 @@ namespace DefaultNamespace.Enemy
         public int columnId;
         public bool isMoving;
         private Transform _transform;
+        public int moneyReward;
+        public int scoreReward;
+        private EnemyView _enemyView;
         
         [SerializeField]public Vector2 direction;
         [SerializeField]private float _speed;
@@ -19,6 +22,8 @@ namespace DefaultNamespace.Enemy
         {
             _currentHp = level;
             _transform = gameObject.transform;
+            _enemyView = GetComponent<EnemyView>();
+            _enemyView.enemyLevel.text = _currentHp.ToString();
         }
 
         public void Update()
@@ -31,9 +36,9 @@ namespace DefaultNamespace.Enemy
                 if (Vector3.Distance(_transform.position,_currentTargetTile) < 0.15)
                 {
                     isMoving = false;
-                    if (GameEvents.Instance.listOfEnemy.Contains(this))
+                    if (EnemyEvents.Instance.listOfEnemy.Contains(this))
                     {
-                        GameEvents.Instance.DestroyEnemyByGettingTarget(gameObject);
+                        EnemyEvents.Instance.DestroyEnemyByGettingTarget(gameObject);
                     }
                 }
             }
@@ -44,8 +49,10 @@ namespace DefaultNamespace.Enemy
             _currentHp -= damage;
             if (_currentHp <= 0)
             {
-                GameEvents.Instance.listOfEnemy.Add(this);
-                GameEvents.Instance.OnDestroyEnemyByGettingTarget += DestroyEnemy;
+                EnemyEvents.Instance.listOfEnemy.Add(this);
+                EnemyEvents.Instance.OnDestroyEnemyByGettingTarget += DestroyEnemy;
+                MoneyEvents.Instance.ChangePlayerMoney(moneyReward);
+                ScoreEvents.Instance.ChangeScore(scoreReward);
             }
         }
 

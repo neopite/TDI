@@ -5,10 +5,9 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class GameEvents : MonoBehaviour
+    public class EnemyEvents : MonoBehaviour
     {
-        public static GameEvents Instance;
-
+        public static EnemyEvents Instance;
         public Action<GameObject> OnDestroyEnemyByGettingTarget;
         public List<EnemyBase> listOfEnemy;
 
@@ -16,7 +15,7 @@ namespace DefaultNamespace
         {
             OnDestroyEnemyByGettingTarget?.Invoke(enemy);
         }
- 
+
         public void Start()
         {
             if (Instance != null)

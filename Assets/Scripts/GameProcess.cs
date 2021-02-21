@@ -4,6 +4,7 @@ using System.Linq;
 using DefaultNamespace.Enemy;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
@@ -16,10 +17,12 @@ namespace DefaultNamespace
         private int _wavesSpawned;
         private Dictionary<int, List<EnemyBase>> _wavesPosition;
         private List<EnemyCell> _tiles;
-        public bool isLevelStarted;
-        public TextMeshProUGUI gameState;
+        private bool _isLevelStarted;
         private bool _isSpawnEnd;
-        public Image gameOver;
+        public int wavesDestroyed;
+        [SerializeField]private TextMeshProUGUI gameState;
+        [SerializeField]private Image gameOver;
+
 
         private void Start()
         {
@@ -33,7 +36,7 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            if (isLevelStarted && !_isSpawnEnd)
+            if (_isLevelStarted && !_isSpawnEnd)
             {
                 List<int> wavesId = _wavesPosition.Keys.OrderByDescending(x=>x).ToList();
                 foreach (var waveNumber in wavesId)
@@ -43,7 +46,7 @@ namespace DefaultNamespace
                 
                 ShootWaves();
                 StartCoroutine(SpawnWave());
-                isLevelStarted = false;
+                _isLevelStarted = false;
             }
         }
 
@@ -71,7 +74,7 @@ namespace DefaultNamespace
         {
             if (waveId >= _enemyManager.enemyGrid.Rows)
             {
-                isLevelStarted = false;
+                _isLevelStarted = false;
                 CreateGameOverWindow();
             }
             else
@@ -107,6 +110,12 @@ namespace DefaultNamespace
                 DamageEnemiesPerStep(listOfEnemiesAtPos.Count-1,rightTowers,listOfEnemiesAtPos,wavePos-1);     
             }else{
                 _wavesPosition.Remove(wavePos);
+                wavesDestroyed++;
+                if (wavesDestroyed % _enemyManager.enemyGrid.Columns == 0)
+                {
+                    MoneyEvents.Instance.ChangePlayerMoney(_enemyManager.waveReward.moneyReward);
+                    ScoreEvents.Instance.ChangeScore(_enemyManager.waveReward.scoreReward);
+                }
             }
         }
 
@@ -133,7 +142,7 @@ namespace DefaultNamespace
         
         public void ChangeLevelState()
         {
-            isLevelStarted = !isLevelStarted;
+            _isLevelStarted = !_isLevelStarted;
             gameState.text = "Continue";
         }
     }
