@@ -128,6 +128,10 @@ namespace DefaultNamespace
                             {
                                 listOfEnemies.Remove(enemy);
                             }else EnemyHpEvents.Instance.ChangeCurrentHp(enemy);
+                            if (enemyId != 0)
+                            {
+                                enemyId--;
+                            }
                         }
                     }
                 }

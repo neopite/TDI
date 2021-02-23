@@ -48,7 +48,7 @@ namespace DefaultNamespace
                 EnemyBase enemy = Instantiate(listOfEnemies[i], transform);
                 enemy.transform.position = previewEnemyCells[i].transform.position;
                 enemy.columnId = i; // set enemy column by default
-                for (int j = 0; j <= wavesSpawned/enemyGrid.Rows; j++)
+                for (int j = 0; j <= wavesSpawned/initSize; j++)
                 {
                     _enemyBuffWave.listOfBuffs[i].CastBuff(ref enemy);   
                 }
