@@ -22,6 +22,7 @@ namespace DefaultNamespace
         public int wavesDestroyed;
         [SerializeField]private TextMeshProUGUI gameState;
         [SerializeField]private Image gameOver;
+        private EnemyBuffWave _enemyBuffWave;
 
 
         private void Start()
@@ -56,14 +57,7 @@ namespace DefaultNamespace
             yield return new WaitForSeconds(.15f);
             if (_levelWaves.Count != _wavesSpawned)
             {
-                List<EnemyBase> listOfEnemies = new List<EnemyBase>(); 
-                for (int i = 0; i < _levelWaves[_wavesSpawned].ListOfEnemies.Count; i++) 
-                {
-                    EnemyBase enemy = Instantiate(_levelWaves[_wavesSpawned].ListOfEnemies[i], transform);
-                    enemy.transform.position = EnemyManager.Instance.previewEnemyCells[i].transform.position;
-                    enemy.columnId = i; // set enemy column by default
-                    listOfEnemies.Add(enemy);
-                } 
+                List<EnemyBase> listOfEnemies = _enemyManager.InstantiateWave(_levelWaves[_wavesSpawned].ListOfEnemies,_wavesSpawned);
                 _wavesPosition.Add(0, listOfEnemies);
                 _wavesSpawned++;            
             }
@@ -128,8 +122,12 @@ namespace DefaultNamespace
                     {
                         if (towers[wavePos, i].enemyType == listOfEnemies[enemyId].type)
                         {
-                            towers[wavePos, i].Shoot(towers[wavePos, i].level, listOfEnemies[enemyId]);
-                            listOfEnemies.RemoveAt(enemyId);
+                            EnemyBase enemy = listOfEnemies[enemyId];
+                            towers[wavePos, i].Shoot(towers[wavePos, i].level, enemy);
+                            if (enemy._currentHp<=0)
+                            {
+                                listOfEnemies.Remove(enemy);
+                            }else EnemyHpEvents.Instance.ChangeCurrentHp(enemy);
                         }
                     }
                 }

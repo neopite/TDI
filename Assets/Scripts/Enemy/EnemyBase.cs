@@ -5,7 +5,7 @@ namespace DefaultNamespace.Enemy
     public  class EnemyBase : MonoBehaviour , IDamageable
     {
         public int level;
-        private int _currentHp;
+        public int _currentHp;
         public EnemyType type;
         public int columnId;
         public bool isMoving;
@@ -24,6 +24,7 @@ namespace DefaultNamespace.Enemy
             _transform = gameObject.transform;
             _enemyView = GetComponent<EnemyView>();
             _enemyView.enemyLevel.text = _currentHp.ToString();
+            EnemyHpEvents.Instance.OnChangeCurrentHp += ChangeCurrentHp;
         }
 
         public void Update()
@@ -43,7 +44,12 @@ namespace DefaultNamespace.Enemy
                 }
             }
         }
-        
+
+        public void ChangeLevel(int level)
+        {
+            this.level = level;
+            _currentHp = level;
+        }
         public void ReceiveDamage(int damage)
         {
             _currentHp -= damage;
@@ -65,6 +71,11 @@ namespace DefaultNamespace.Enemy
         {
             _currentTargetTile= nextTilePosition;
             isMoving = true;
+        }
+        
+        private void ChangeCurrentHp(EnemyBase enemy)
+        {
+            enemy._enemyView.enemyLevel.text= enemy._currentHp.ToString();
         }
     }
 }

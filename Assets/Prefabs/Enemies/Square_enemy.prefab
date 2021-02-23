@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  _currentHp: 0
   type: 1
   columnId: 0
   isMoving: 0
