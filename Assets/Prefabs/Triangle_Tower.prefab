@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  cost: 7
+  cost: 2
   enemyType: 2
   _levelView: {fileID: 6516725315711993789}
 --- !u!61 &-71370436442485620

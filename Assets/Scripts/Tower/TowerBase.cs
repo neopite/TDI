@@ -29,7 +29,7 @@ namespace DefaultNamespace
         
         private void ChangeLevelOnView(TowerBase tower)
         {
-            tower._levelView.text = level.ToString();
+            tower._levelView.text = tower.level.ToString();
         }
     }
 }
