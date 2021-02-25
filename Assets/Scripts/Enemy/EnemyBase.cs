@@ -34,7 +34,7 @@ namespace DefaultNamespace.Enemy
                 var position = _transform.position;
                 position = new Vector2(position.x, position.y + (direction.y * _speed * Time.deltaTime));
                 _transform.position = position;
-                if (Vector3.Distance(_transform.position,_currentTargetTile) < 0.15)
+                if (Vector3.Distance(_transform.position,_currentTargetTile) < 0.1f)
                 {
                     isMoving = false;
                     if (EnemyEvents.Instance.listOfEnemy.Contains(this))

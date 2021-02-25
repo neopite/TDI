@@ -120,7 +120,7 @@ namespace DefaultNamespace
                 {
                     if (i <= listOfEnemies.Count)
                     {
-                        if (towers[wavePos, i].enemyType == listOfEnemies[enemyId].type)
+                        if (listOfEnemies.Count!=0 && towers[wavePos, i].enemyType == listOfEnemies[enemyId].type)
                         {
                             EnemyBase enemy = listOfEnemies[enemyId];
                             towers[wavePos, i].Shoot(towers[wavePos, i].level, enemy);
