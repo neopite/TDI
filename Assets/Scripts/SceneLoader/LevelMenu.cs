@@ -45,16 +45,16 @@ public class LevelMenu : MonoBehaviour
             maxInd = _levelCount-1;
         }
 
-        int diff = maxInd - minInd;
-        for (int i = 0; i <diff; i++)
+        int elementOnPage = maxInd - minInd;
+        for (int i = 0; i <elementOnPage; i++)
         {
             _levelFields[i].text = _levelLoader.listOfLevels[minInd + i];
         }
 
-        if (_dividedLevelPerPage - diff != 0)
+        if (_dividedLevelPerPage - elementOnPage != 0)
         {
-            int riz = _dividedLevelPerPage - diff;
-            for (int i = _dividedLevelPerPage; _dividedLevelPerPage-riz < i ; i--)
+            int elementCountToRewrite = _dividedLevelPerPage - elementOnPage;
+            for (int i = _dividedLevelPerPage; _dividedLevelPerPage-elementCountToRewrite < i ; i--)
             {
                 _levelFields[i-1].text = "soon";
             }
@@ -63,16 +63,6 @@ public class LevelMenu : MonoBehaviour
         _currentPage = page;
     }
     
-    /*
-      if (_dividedLevelPerPage - diff != 0)
-        {
-            int riz = _dividedLevelPerPage - diff;
-            for (int i = _dividedLevelPerPage; 0 < i-riz ; i--)
-            {
-                _levelFields[i].text = "soon";
-            }
-        }
-     */
 
     public void GetNextPage()
     {
