@@ -101,7 +101,12 @@ namespace DefaultNamespace
             DamageEnemiesPerStep(0,leftTowers,listOfEnemiesAtPos,wavePos-1);
             if (listOfEnemiesAtPos.Count != 0)
             {
-                DamageEnemiesPerStep(listOfEnemiesAtPos.Count-1,rightTowers,listOfEnemiesAtPos,wavePos-1);     
+                DamageEnemiesPerStep(listOfEnemiesAtPos.Count-1,rightTowers,listOfEnemiesAtPos,wavePos-1);
+                if (listOfEnemiesAtPos.Count == 0)
+                {
+                    _wavesPosition.Remove(wavePos);
+                    wavesDestroyed++;
+                }
             }else{
                 _wavesPosition.Remove(wavePos);
                 wavesDestroyed++;
@@ -118,10 +123,8 @@ namespace DefaultNamespace
             for (int i = 0; i < towers.GetLength(1); i++)
                 if (towers[wavePos, i] != null)
                 {
-                    if (i <= listOfEnemies.Count)
+                    if (listOfEnemies.Count!=0 && towers[wavePos, i].enemyType == listOfEnemies[enemyId].type)
                     {
-                        if (listOfEnemies.Count!=0 && towers[wavePos, i].enemyType == listOfEnemies[enemyId].type)
-                        {
                             EnemyBase enemy = listOfEnemies[enemyId];
                             towers[wavePos, i].Shoot(towers[wavePos, i].level, enemy);
                             if (enemy._currentHp<=0)
@@ -132,7 +135,6 @@ namespace DefaultNamespace
                             {
                                 enemyId--;
                             }
-                        }
                     }
                 }
         }
