@@ -3,11 +3,15 @@ using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace
 {
-    public class SceneReload : MonoBehaviour
+    public class LevelSceneActions : MonoBehaviour
     {
         public void ReloadScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        public void LoadMainMenuScene()
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
