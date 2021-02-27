@@ -2296,17 +2296,22 @@ MonoBehaviour:
   previewEnemyCells: []
   waves:
   - ListOfEnemies:
-    - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
+  - ListOfEnemies:
+    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
+  - ListOfEnemies:
     - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
   - ListOfEnemies:
-    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
-    - {fileID: 4195133912746721265, guid: 8819175f17f1f48408bbc855a9f5a9e7, type: 3}
     - {fileID: 1322960798207487659, guid: 74b2f2beeb96a7e4b98730a7013b2465, type: 3}
-    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
+  - ListOfEnemies:
+    - {fileID: 246824905915636131, guid: 4a7dfb694ad9d58438f897c65eb46c75, type: 3}
   - ListOfEnemies:
     - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
-    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
     - {fileID: -6377856622594585752, guid: f9ae0a93cd6dbc6499188189027dfe3b, type: 3}
+  - ListOfEnemies:
+    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
+    - {fileID: 1471179426996772715, guid: 7ff7c212bbf67864e88bec4dd94c5e24, type: 3}
+  - ListOfEnemies:
     - {fileID: 1322960798207487659, guid: 74b2f2beeb96a7e4b98730a7013b2465, type: 3}
     - {fileID: 1322960798207487659, guid: 74b2f2beeb96a7e4b98730a7013b2465, type: 3}
   replyCountWaves: 4
