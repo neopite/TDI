@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7268834401822006490}
   - component: {fileID: 1471179426996772715}
   - component: {fileID: -6859394584004386853}
+  - component: {fileID: -3769997433495489056}
   m_Layer: 8
   m_Name: Triangle_enemy
   m_TagString: Untagged
@@ -97,12 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  _currentHp: 0
   type: 2
-  columnId: 0
-  isMoving: 0
-  moneyReward: 15
-  scoreReward: 10
+  _enemyKillReward: {fileID: 0}
   direction: {x: 0, y: -1}
   _speed: 5
   _currentTargetTile: {x: 0, y: 0, z: 0}
@@ -119,6 +116,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLevel: {fileID: 7177737914551121417}
+--- !u!114 &-3769997433495489056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924017997882313786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4776dc6d0c7a6334dab54875e35da686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moneyReward: 42
+  _scoreReward: 1
 --- !u!1001 &8878631386449505456
 PrefabInstance:
   m_ObjectHideFlags: 0

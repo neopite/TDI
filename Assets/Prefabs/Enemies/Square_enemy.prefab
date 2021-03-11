@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6636748181413179792}
   - component: {fileID: -6377856622594585752}
   - component: {fileID: -7351134538410966636}
+  - component: {fileID: 7473677507860418462}
   m_Layer: 0
   m_Name: Square_enemy
   m_TagString: Untagged
@@ -97,12 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  _currentHp: 0
   type: 1
-  columnId: 0
-  isMoving: 0
-  moneyReward: 15
-  scoreReward: 15
+  _enemyKillReward: {fileID: 0}
   direction: {x: 0, y: -1}
   _speed: 5
   _currentTargetTile: {x: 0, y: 0, z: 0}
@@ -119,6 +116,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLevel: {fileID: 5143766510869216202}
+--- !u!114 &7473677507860418462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496207769318898116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4776dc6d0c7a6334dab54875e35da686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moneyReward: 15
+  _scoreReward: 15
 --- !u!1001 &6902077373314769267
 PrefabInstance:
   m_ObjectHideFlags: 0

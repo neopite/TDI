@@ -13,9 +13,9 @@ namespace DefaultNamespace
         {
             if (enemyType == target.type)
             {
-                target.level += levelIncrease;
+                target.Level += levelIncrease;
             }
-            else target.level += anotherLevelIncrease;
+            else target.Level += anotherLevelIncrease;
         }
     }
 }

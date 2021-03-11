@@ -1,27 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DefaultNamespace;
-using DefaultNamespace.Enemy;
 using UnityEngine;
 
 public class TowerManager : MonoBehaviour
 {
-    public TowerGrid leftTowerGrid;
-    public TowerGrid rightTowerGrid;
-   [SerializeField] private TowerGridCell _lastPressedCell;
-   private List<TowerGridCell> _towerCellsList;
+    [SerializeField]private TowerGrid leftTowerGrid;
+    [SerializeField]private TowerGrid rightTowerGrid;
 
-   public List<TowerGridCell> TowerGridCells
-   {
-       get => _towerCellsList;
-       set => _towerCellsList = value;
-   }
+    public TowerGrid LeftTowerGrid => leftTowerGrid;
+    public TowerGrid RightTowerGrid => rightTowerGrid;
+
+    private TowerGridCell _lastPressedCell;
+    private List<TowerGridCell> _towerCellsList;
 
     public TowerGridCell LastPressedCell
     {
-        get => _lastPressedCell;
         set => _lastPressedCell = value;
     }
+
 
     public static TowerManager Instance;
     
@@ -55,7 +51,7 @@ public class TowerManager : MonoBehaviour
             tower.transform.parent = _lastPressedCell.transform;
             _lastPressedCell.tower = tower;
             _lastPressedCell = null;
-            MoneyEvents.Instance.ChangePlayerMoney(-tower.cost);
+            MoneyEvents.Instance.ChangePlayerMoney(-tower.Cost);
         }
     }
 }

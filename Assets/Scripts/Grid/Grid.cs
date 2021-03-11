@@ -8,10 +8,10 @@ public class Grid<T> : MonoBehaviour where T : CellBase
     [Range(1,9)][SerializeField] private int _rows;
     [Range(1,9)][SerializeField] private int _columns;
     [Range(0,3)][SerializeField]private float verticalGridOffset;
-    [Range(1,2)]public float tilesOffset = 1.1f;
-    [Range(-2,2)]public float offsetBetweenGrids;
+    [Range(1,2)][SerializeField]private float tilesOffset = 1.1f;
+    [Range(-2,2)][SerializeField]private float offsetBetweenGrids;
     public GridPosition gridPos;
-    private Vector2 _pivot;
+    [SerializeField]private Vector2 _pivot;
     
     public int Rows
     { 
@@ -48,7 +48,7 @@ public class Grid<T> : MonoBehaviour where T : CellBase
 
     private void SetPivotForGrid()
     {
-        Grid<EnemyCell> enemyGrid = EnemyManager.Instance.enemyGrid;
+        Grid<EnemyCell> enemyGrid = EnemyManager.Instance.EnemyGrid;
         Vector2 enemyGridPivot = enemyGrid._pivot;
         if (gridPos == GridPosition.Center)
         {

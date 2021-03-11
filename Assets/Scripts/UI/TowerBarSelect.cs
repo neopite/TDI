@@ -23,7 +23,7 @@ namespace DefaultNamespace
 
         private void TryCreateTowerAtCell(int towerIndex)
         {
-            if (PlayerData.Instance.IsEnoughMoney(ListOfAvailableTowers[towerIndex].cost))
+            if (PlayerData.Instance.IsEnoughMoney(ListOfAvailableTowers[towerIndex].Cost))
             {
                 TowerManager.Instance.CreateTower(ListOfAvailableTowers[towerIndex]);
             }else Debug.Log("No money");

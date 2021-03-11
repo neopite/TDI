@@ -4,19 +4,20 @@ namespace DefaultNamespace.Enemy
 {
     public  class EnemyBase : MonoBehaviour , IDamageable
     {
-        public int level;
-        public int _currentHp;
-        public EnemyType type;
-        public int columnId;
-        public bool isMoving;
-        private Transform _transform;
-        public int moneyReward;
-        public int scoreReward;
-        private EnemyView _enemyView;
-        
-        [SerializeField]public Vector2 direction;
+        [SerializeField]private int level;
+        [SerializeField]private Vector2 direction;
         [SerializeField]private float _speed;
         [SerializeField]private Vector3 _currentTargetTile;
+        [SerializeField] private EnemyKillReward _enemyKillReward;
+        private Transform _transform;
+        private EnemyView _enemyView;
+        private int _currentHp;
+        private bool _isMoving;
+        public int ColumnId { get; set; }
+        public int Level { get => level;set => level = value;}
+        public EnemyType type;
+        public bool IsAlive => _currentHp > 0;
+        
 
         public void Start()
         {
@@ -24,19 +25,20 @@ namespace DefaultNamespace.Enemy
             _transform = gameObject.transform;
             _enemyView = GetComponent<EnemyView>();
             _enemyView.enemyLevel.text = _currentHp.ToString();
+            _enemyKillReward = GetComponent<EnemyKillReward>();
             EnemyHpEvents.Instance.OnChangeCurrentHp += ChangeCurrentHp;
         }
 
         public void Update()
         {
-            if (isMoving)
+            if (_isMoving)
             {
                 var position = _transform.position;
                 position = new Vector2(position.x, position.y + (direction.y * _speed * Time.deltaTime));
                 _transform.position = position;
                 if (Vector3.Distance(_transform.position,_currentTargetTile) < 0.1f)
                 {
-                    isMoving = false;
+                    _isMoving = false;
                     if (EnemyEvents.Instance.listOfEnemy.Contains(this))
                     {
                         EnemyEvents.Instance.DestroyEnemyByGettingTarget(gameObject);
@@ -57,8 +59,8 @@ namespace DefaultNamespace.Enemy
             {
                 EnemyEvents.Instance.listOfEnemy.Add(this);
                 EnemyEvents.Instance.OnDestroyEnemyByGettingTarget += DestroyEnemy;
-                MoneyEvents.Instance.ChangePlayerMoney(moneyReward);
-                ScoreEvents.Instance.ChangeScore(scoreReward);
+                MoneyEvents.Instance.ChangePlayerMoney(_enemyKillReward.MoneyReward);
+                ScoreEvents.Instance.ChangeScore(_enemyKillReward.ScoreReward);
             }
         }
 
@@ -70,7 +72,7 @@ namespace DefaultNamespace.Enemy
         public void ChangeStage(Vector3 nextTilePosition)
         {
             _currentTargetTile= nextTilePosition;
-            isMoving = true;
+            _isMoving = true;
         }
         
         private void ChangeCurrentHp(EnemyBase enemy)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 892358950468475612}
   - component: {fileID: 1322960798207487659}
   - component: {fileID: -5645401164319981594}
+  - component: {fileID: 463488853549449657}
   m_Layer: 0
   m_Name: Rectangle_enemy
   m_TagString: Untagged
@@ -97,12 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  _currentHp: 0
   type: 3
-  columnId: 0
-  isMoving: 0
-  moneyReward: 15
-  scoreReward: 25
+  _enemyKillReward: {fileID: 0}
   direction: {x: 0, y: -1}
   _speed: 5
   _currentTargetTile: {x: 0, y: 0, z: 0}
@@ -119,6 +116,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLevel: {fileID: 8718048314186359593}
+--- !u!114 &463488853549449657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719280477145137292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4776dc6d0c7a6334dab54875e35da686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moneyReward: 4
+  _scoreReward: 5
 --- !u!1001 &6942286106089863568
 PrefabInstance:
   m_ObjectHideFlags: 0

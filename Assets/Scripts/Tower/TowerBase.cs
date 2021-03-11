@@ -7,8 +7,21 @@ namespace DefaultNamespace
 {
     public  class TowerBase : MonoBehaviour , IShootable
     {
-        public int level;
-        public float cost;
+        [SerializeField]private int level;
+        [SerializeField]private float cost;
+
+        public int Level
+        {
+            get => level;
+            set => level = value;
+        }
+
+        public float Cost
+        {
+            get => cost;
+            set => cost = value;
+        }
+
         public EnemyType enemyType;
         [SerializeField]private TextMeshProUGUI _levelView;
 

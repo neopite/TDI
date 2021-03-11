@@ -410,7 +410,6 @@ MonoBehaviour:
   verticalGridOffset: 0
   tilesOffset: 1.1
   offsetBetweenGrids: 1
-  gridPos: 1
 --- !u!4 &291755693
 Transform:
   m_ObjectHideFlags: 0
@@ -461,7 +460,6 @@ MonoBehaviour:
   verticalGridOffset: 0
   tilesOffset: 1.1
   offsetBetweenGrids: -1
-  gridPos: 0
 --- !u!4 &411496263
 Transform:
   m_ObjectHideFlags: 0
@@ -925,7 +923,6 @@ MonoBehaviour:
   verticalGridOffset: 0
   tilesOffset: 1.1
   offsetBetweenGrids: 0
-  gridPos: 4
 --- !u!4 &880574677
 Transform:
   m_ObjectHideFlags: 0
@@ -1578,7 +1575,6 @@ MonoBehaviour:
   verticalGridOffset: 0
   tilesOffset: 1.1
   offsetBetweenGrids: 0
-  gridPos: 2
 --- !u!4 &1346621870
 Transform:
   m_ObjectHideFlags: 0
@@ -2390,7 +2386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ea3fac7f0c4642b34c945c916e8043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyGrid: {fileID: 880574676}
+  _enemyGrid: {fileID: 880574676}
   enemyPreviewGrid: {fileID: 1346621869}
   towerGridsTowerCells: []
   previewEnemyCells: []
@@ -2446,7 +2442,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftTowerGrid: {fileID: 411496262}
   rightTowerGrid: {fileID: 291755692}
-  _lastPressedCell: {fileID: 0}
 --- !u!114 &1775990306
 MonoBehaviour:
   m_ObjectHideFlags: 0
